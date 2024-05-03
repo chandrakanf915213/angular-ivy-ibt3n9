@@ -1,0 +1,35 @@
+<hello name="{{ name }}"></hello>
+<div 
+  cdkDropList
+  cdkDropListOrientation="horizontal"
+  class="example-list">
+  <div 
+    class="example-box"
+    draggable="true"
+    (drag)="drag_handler($event)"
+    (dragend)="dragend_handler($event)"
+    (dragenter)="dragenter_handler($event)"
+    (dragleave)="dragleave_handler($event)"
+    (dragover)="dragover_handler($event)"
+    (dragstart)="dragstart_handler($event)"
+    (drop)="drop_handler($event)"
+    [attr.data-value]="ekv.value"
+    *ngFor="let ekv of ekvs" cdkDrag
+    >
+      <div>
+        <p *cdkDragPreview><span class="blink preview">{{ekv.value}}</span></p>
+      </div>
+      <div class="example-custom-placeholder" *cdkDragPlaceholder></div>
+      {{ekv.key}}
+  </div>
+</div>
+<p>
+<textarea
+  [id]="BODY_TEXTAREA"
+  class="droptarget"
+  rows="4"
+  cols="50"
+  >Select one drag and drop in this textarea
+</textarea>
+<p id="paragraph">Other events have not been used yet!</p>
+<p id="paragraph2">Drag and drop has not been used yet!</p>
